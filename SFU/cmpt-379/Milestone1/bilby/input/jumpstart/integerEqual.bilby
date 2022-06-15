@@ -1,0 +1,4 @@
+main{
+	imm temp := 16;
+	print 16 == temp $n;
+}

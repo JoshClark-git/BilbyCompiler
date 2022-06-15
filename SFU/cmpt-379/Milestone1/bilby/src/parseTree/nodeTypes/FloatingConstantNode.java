@@ -3,7 +3,6 @@ package parseTree.nodeTypes;
 import parseTree.ParseNode;
 import parseTree.ParseNodeVisitor;
 import tokens.FloatingConstantToken;
-import tokens.IntegerConstantToken;
 import tokens.Token;
 
 public class FloatingConstantNode extends ParseNode {
@@ -19,10 +18,10 @@ public class FloatingConstantNode extends ParseNode {
 // attributes
 	
 	public double getValue() {
-		return numberToken().getValue();
+		return floatingToken().getValue();
 	}
 
-	public FloatingConstantToken numberToken() {
+	public FloatingConstantToken floatingToken() {
 		return (FloatingConstantToken)token;
 	}	
 

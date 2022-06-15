@@ -1,0 +1,4 @@
+main{
+	imm var := #2;
+	print var $n;
+}

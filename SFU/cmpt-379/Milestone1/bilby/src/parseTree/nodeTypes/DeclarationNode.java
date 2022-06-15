@@ -11,7 +11,7 @@ public class DeclarationNode extends ParseNode {
 
 	public DeclarationNode(Token token) {
 		super(token);
-		assert(token.isLextant(Keyword.IMM));
+		//assert(token.isLextant(Keyword.IMM, Keyword.MUT));
 	}
 
 	public DeclarationNode(ParseNode node) {
@@ -33,10 +33,11 @@ public class DeclarationNode extends ParseNode {
 	////////////////////////////////////////////////////////////
 	// convenience factory
 	
-	public static DeclarationNode withChildren(Token token, ParseNode declaredName, ParseNode initializer) {
+	public static DeclarationNode withChildren(Token token, ParseNode ...children) {
 		DeclarationNode node = new DeclarationNode(token);
-		node.appendChild(declaredName);
-		node.appendChild(initializer);
+		for(ParseNode child: children) {
+			node.appendChild(child);
+		}
 		return node;
 	}
 	
@@ -47,6 +48,7 @@ public class DeclarationNode extends ParseNode {
 	public void accept(ParseNodeVisitor visitor) {
 		visitor.visitEnter(this);
 		visitChildren(visitor);
+		//visitor.visit(this);
 		visitor.visitLeave(this);
 	}
 }

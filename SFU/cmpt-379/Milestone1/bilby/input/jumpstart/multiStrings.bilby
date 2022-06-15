@@ -1,0 +1,6 @@
+main{
+	imm a := "a";
+	imm b := "b";
+	print a $n;
+	print b $n;
+}

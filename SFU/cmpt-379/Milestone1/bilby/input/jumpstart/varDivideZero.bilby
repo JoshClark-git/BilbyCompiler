@@ -1,0 +1,4 @@
+main{
+	imm var := 5;
+	print (10/var) + var $n;
+}

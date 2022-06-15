@@ -1,5 +1,8 @@
 package semanticAnalyzer.types;
 
+import java.util.Collection;
+import java.util.List;
+
 public interface Type {
 	/** returns the size of an instance of this type, in bytes.
 	 * 
@@ -14,4 +17,16 @@ public interface Type {
 	 * @return string representation of type.
 	 */
 	public String infoString();
+
+	public boolean equivalent(Type otherType);
+
+	public Collection<TypeVariable> getTypeVariables();
+
+	public Type concreteType();
+	
+	public Type atomicType();
+	
+	public boolean isArray();
+	
+	public boolean isRange();
 }

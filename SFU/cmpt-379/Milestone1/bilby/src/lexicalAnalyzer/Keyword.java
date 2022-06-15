@@ -7,11 +7,36 @@ import tokens.Token;
 
 public enum Keyword implements Lextant {
 	IMM("imm"),
+	MUT("mut"),
 	PRINT("print"),
 	TRUE("true"),
 	FALSE("false"),
 	MAIN("main"),
-	NULL_KEYWORD("");
+	BOOL("bool"),
+	CHAR("char"),
+	CAST("as"),
+	STRING("string"),
+	INT("int"),
+	FLOAT("float"),
+	VOID("void"),
+	ALLOC("alloc"),
+	IF("if"),
+	ELSE("else"),
+	WHILE("while"),
+	FOR("for"),
+	NULL_KEYWORD(""),
+	LENGTH("length"),
+	LOW("low"),
+	HIGH("high"),
+	IN("in"),
+	RANGE("range"),
+	ARRAY("array"),
+	BREAK("break"),
+	CONTINUE("continue"),
+	FUNC("func"),
+	RETURN("return"),
+	CALL("call"),
+	IFELSE("");
 
 	private String lexeme;
 	private Token prototype;
@@ -39,11 +64,4 @@ public enum Keyword implements Lextant {
 	public static boolean isAKeyword(String lexeme) {
 		return forLexeme(lexeme) != NULL_KEYWORD;
 	}
-	
-	/*   the following hashtable lookup can replace the serial-search implementation of forLexeme() above. It is faster but less clear. 
-	private static LexemeMap<Keyword> lexemeToKeyword = new LexemeMap<Keyword>(values(), NULL_KEYWORD);
-	public static Keyword forLexeme(String lexeme) {
-		return lexemeToKeyword.forLexeme(lexeme);
-	}
-	*/
 }

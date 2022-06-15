@@ -1,0 +1,7 @@
+main{
+	imm var := 1;
+	imm a := 0;
+	imm b := 2;
+	imm c := 3;
+	print (a + b >= c) == true $n;
+}

@@ -9,7 +9,7 @@ import tokens.Token;
 public class BooleanConstantNode extends ParseNode {
 	public BooleanConstantNode(Token token) {
 		super(token);
-		assert(token.isLextant(Keyword.TRUE, Keyword.FALSE));
+		//assert(token.isLextant(Keyword.TRUE, Keyword.FALSE));
 	}
 	public BooleanConstantNode(ParseNode node) {
 		super(node);

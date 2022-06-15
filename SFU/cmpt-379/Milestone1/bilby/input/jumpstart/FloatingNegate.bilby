@@ -1,0 +1,4 @@
+main{
+	imm fl := 1.23;
+	print -fl $n;
+}

@@ -42,20 +42,22 @@ public class LesserCodeGenerator implements SimpleCodeGenerator {
 		for(ASMCodeFragment fragment : args) {
 			code.append(fragment);
 		}
+										// [num1 num2]
 		
-		code.add(Label, subLabel);
+		code.add(Label, subLabel); 		// [.. 'sub]
 		code.add(subtractOpcode);
 		
 		code.add(jumpNegOpcode, trueLabel);
 		code.add(Jump, falseLabel);
-
+		
 		code.add(Label, trueLabel);
 		code.add(PushI, 1);
 		code.add(Jump, joinLabel);
 		code.add(Label, falseLabel);
 		code.add(PushI, 0);
 		code.add(Jump, joinLabel);
-		code.add(Label, joinLabel);		
+		code.add(Label, joinLabel);	
+		
 		
 		return code;
 	}

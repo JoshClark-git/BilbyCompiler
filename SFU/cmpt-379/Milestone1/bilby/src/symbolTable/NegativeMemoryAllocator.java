@@ -44,6 +44,10 @@ public class NegativeMemoryAllocator implements MemoryAllocator {
 	public int getMaxAllocatedSize() {
 		return startingOffset - minOffset;
 	}
+	@Override
+	public int getOffset() {
+		return currentOffset;
+	}
 	
 	@Override
 	public void saveState() {

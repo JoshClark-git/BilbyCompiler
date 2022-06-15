@@ -1,6 +1,7 @@
 package tokens;
 
 import inputHandler.Locator;
+import logging.BilbyLogger;
 
 public class IntegerConstantToken extends TokenImp {
 	protected int value;
@@ -17,12 +18,23 @@ public class IntegerConstantToken extends TokenImp {
 	
 	public static IntegerConstantToken make(Locator locator, String lexeme) {
 		IntegerConstantToken result = new IntegerConstantToken(locator, lexeme);
-		result.setValue(Integer.parseInt(lexeme));
+		try {
+			int value = Integer.parseInt(lexeme);
+			result.setValue(value);
+			return result;
+		} catch (RuntimeException ex) {
+				NumberFormatException();
+				result.setValue(Integer.MAX_VALUE);
+		}
 		return result;
 	}
-	
 	@Override
 	protected String rawString() {
 		return "IntegerConstant, " + value;
+	}
+	private static void NumberFormatException() {
+		BilbyLogger log = BilbyLogger.getLogger("compiler.Runtime");
+		log.severe("Runtime error: Integer value too large");
+		
 	}
 }

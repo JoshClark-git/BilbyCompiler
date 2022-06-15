@@ -1,0 +1,5 @@
+main{
+	imm five := 5;
+	imm float := [five as float];
+	print float $n;
+}

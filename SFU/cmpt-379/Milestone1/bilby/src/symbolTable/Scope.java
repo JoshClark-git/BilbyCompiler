@@ -20,11 +20,27 @@ public class Scope {
 	public Scope createSubscope() {
 		return new Scope(allocator, this);
 	}
+	public Scope createProcedureScope() {
+		return new Scope(procedureScopeAllocator(), this);
+	}
+	public Scope createParameterScope() {
+		return new Scope(parameterScopeAllocator(), this);
+	}
 	
 	private static MemoryAllocator programScopeAllocator() {
 		return new PositiveMemoryAllocator(
 				MemoryAccessMethod.DIRECT_ACCESS_BASE, 
 				MemoryLocation.GLOBAL_VARIABLE_BLOCK);
+	}
+	private static MemoryAllocator parameterScopeAllocator() {
+		return new ParameterMemoryAllocator(
+				MemoryAccessMethod.INDIRECT_ACCESS_BASE, 
+				MemoryLocation.FRAME_POINTER);
+	}
+	private static MemoryAllocator procedureScopeAllocator() {
+		return new ParameterMemoryAllocator(
+				MemoryAccessMethod.INDIRECT_ACCESS_BASE, 
+				MemoryLocation.STACK_POINTER);
 	}
 	
 //////////////////////////////////////////////////////////////////////
@@ -120,5 +136,4 @@ public class Scope {
 		log.severe("variable " + token.getLexeme() + 
 				" used outside of any scope at " + token.getLocation());
 	}
-
 }

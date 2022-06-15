@@ -1,0 +1,4 @@
+main{
+	imm integer := 1;
+	print -integer $n;
+}

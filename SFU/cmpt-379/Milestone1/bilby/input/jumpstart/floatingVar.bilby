@@ -1,0 +1,4 @@
+main{
+	imm fl := 5.55;
+	print fl < 5.0 $n;
+}

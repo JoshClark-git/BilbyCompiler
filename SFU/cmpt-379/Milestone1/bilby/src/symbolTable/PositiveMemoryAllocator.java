@@ -43,6 +43,10 @@ public class PositiveMemoryAllocator implements MemoryAllocator {
 	public int getMaxAllocatedSize() {
 		return maxOffset - startingOffset;
 	}
+	@Override
+	public int getOffset() {
+		return currentOffset;
+	}
 	
 	@Override
 	public void saveState() {

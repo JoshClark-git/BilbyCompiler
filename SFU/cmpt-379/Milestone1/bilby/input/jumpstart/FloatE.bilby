@@ -1,0 +1,4 @@
+main{
+	imm big := 5.55E3;
+	print big $n;
+}

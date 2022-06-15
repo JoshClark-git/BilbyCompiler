@@ -40,6 +40,8 @@ public class PunctuatorScanner {
 		Set<Punctuator> punctuators = punctuatorSetForPrefix(scanned.asString());
 		
 		if(punctuators.size() == 1 && scanned.isPunctuator()) {
+			//System.out.println(scanned.asToken());
+			//System.out.println(input.next());
 			return scanned.asToken();
 		}
 		

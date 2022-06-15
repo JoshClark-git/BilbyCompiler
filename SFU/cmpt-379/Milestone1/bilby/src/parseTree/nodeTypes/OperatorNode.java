@@ -3,12 +3,16 @@ package parseTree.nodeTypes;
 import parseTree.ParseNode;
 import parseTree.ParseNodeVisitor;
 import semanticAnalyzer.signatures.FunctionSignature;
+import semanticAnalyzer.signatures.PromotionSignature;
+
+import java.util.List;
+
 import lexicalAnalyzer.Lextant;
 import tokens.LextantToken;
 import tokens.Token;
 
 public class OperatorNode extends ParseNode {
-	private FunctionSignature signature;
+	private PromotionSignature promotionSignature;
 
 	public OperatorNode(Token token) {
 		super(token);
@@ -30,13 +34,15 @@ public class OperatorNode extends ParseNode {
 		return (LextantToken)token;
 	}
 	
-	public FunctionSignature getSignature() {
-		return signature;
+	public PromotionSignature getPromotionSignature() {
+		return promotionSignature;
 	}
 
-	public void setSignature(FunctionSignature signature) {
-		this.signature = signature;
+	public void setPromotionSignature(PromotionSignature promotionSignature) {
+		this.promotionSignature = promotionSignature;
 	}
+
+
 
 	
 	////////////////////////////////////////////////////////////
@@ -49,6 +55,13 @@ public class OperatorNode extends ParseNode {
 		}
 		return node;
 	}
+	public static ParseNode withArrayChildren(Token token, List<ParseNode> nodes) {   
+		OperatorNode node = new OperatorNode(token);
+		for(ParseNode child: nodes) {
+			node.appendChild(child);
+		}
+		return node;
+	}
 	
 	///////////////////////////////////////////////////////////
 	// boilerplate for visitors
@@ -56,7 +69,13 @@ public class OperatorNode extends ParseNode {
 	public void accept(ParseNodeVisitor visitor) {
 		visitor.visitEnter(this);
 		visitChildren(visitor);
+		visitor.visit(this);
 		visitor.visitLeave(this);
+	}
+
+	public static ParseNode withChildren(Token listToken, List<ParseNode> nodes) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

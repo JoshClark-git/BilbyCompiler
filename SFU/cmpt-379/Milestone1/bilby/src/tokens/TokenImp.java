@@ -22,6 +22,9 @@ public abstract class TokenImp implements Token {
 	public TextLocation getLocation() {
 		return location;
 	}
+	public void setLocation(TextLocation newLocation) {
+		this.location = newLocation;
+	}
 	
 	/** A string (not surrounded by parentheses) representing the subclass information.
 	 * @return subclass information string

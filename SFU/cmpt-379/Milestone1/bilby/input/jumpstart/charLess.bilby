@@ -1,0 +1,5 @@
+main{
+	imm five := 5;
+	imm six := 6;
+	print five =< six $n;
+}

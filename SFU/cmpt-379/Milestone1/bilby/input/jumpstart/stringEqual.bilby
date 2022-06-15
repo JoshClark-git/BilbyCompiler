@@ -1,0 +1,5 @@
+main{
+	imm c := "H";
+	imm d := c;
+	print c == d $n;
+}

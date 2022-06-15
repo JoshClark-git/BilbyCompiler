@@ -1,0 +1,4 @@
+main{
+	imm char := #37;
+	print char $n;
+}

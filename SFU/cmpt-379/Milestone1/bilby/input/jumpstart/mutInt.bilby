@@ -1,0 +1,5 @@
+main{
+	mut six := 6;
+	six := six + 12;
+	print six $n;
+}

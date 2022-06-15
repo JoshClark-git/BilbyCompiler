@@ -7,7 +7,6 @@ package asmCodeGenerator.codeStorage;
 //of the next instruction to execute.
 
 //The accumulator (having, say, 1024 locations) is used for most operations.
-//Each accumulator location holds either an integer or a floating-point value.
 //The content of memory location m in the memory array is denoted MEM(l);
 //the memory is of some large size and m must be a non-negative int.
 //Each memory location is one byte long.  Floats and integers are stored in 8 and 4 memory
@@ -20,7 +19,7 @@ public enum ASMOpcode {
 	// For the following arithmetic instructions, the one or two operands involved 
 	// (top element(s) of accumulator stack) must be integer.
 	// If not, the machine halts.  The result is an int.
-
+	
 	Add,			// adds top two elements of accumulator, leaving result on accumulator. [... a b] -> [... a+b]
 	Subtract,		// subtracts top of accumulator from 2nd element.  [... a b] -> [... a-b]
 	Negate,			// [... a]   -> [... -a]
@@ -73,7 +72,7 @@ public enum ASMOpcode {
 	// Accumulator stack manipulation
 	Duplicate,		// [... a] -> [... a a]		(duplicate the top element of the accumulator)
 	Exchange,		// [... a b] -> [... b a]
-
+	
 	Pop,			// [... a b] -> [... a]
 	PushI,			// takes an integer operand i:  [... a] -> [... a i]
 	PushD,			// takes a string operand, pushes the data location labelled with this string.
@@ -150,6 +149,8 @@ public enum ASMOpcode {
 	//
 	// any line whose first character is "#" is treated as a comment (and ignored).
 	// any string after the opcode and (optional) argument on a line is considered a comment.
+	
+	
 
 	public static final int ASMIntSize = 4;
 	public static final int ASMFloatSize = 8;
